@@ -1,0 +1,237 @@
+
+$hd: 1px !default;  //基本单位
+
+// ---- 色彩
+
+// 品牌色
+$color-primary: #108ee9 !default;
+$color-primary-tap: #0e80d2 !default;
+$color-success: #6abf47 !default;
+$color-warning: #ffc600 !default;
+$color-error: #f4333c !default;
+$color-important: #ff5b05 !default;  // 用于小红点
+$color-wait: #108ee9 !default;
+$color-transparent: transparent;
+
+$theme-colors: () !default;
+$theme-colors: map-merge((
+  'primary': $color-primary,
+  'success': $color-success,
+  'warning': $color-warning,
+  'error': $color-error,
+  'transparent': $color-transparent
+), $theme-colors);
+
+// 字体颜色
+$color-text-base:             #000 !default;       // 基本
+$color-text-base-inverse:     #fff !default;       // 基本反色
+$color-text-secondary:        #a4a9b0 !default;    // 辅助色
+$color-text-placeholder:      #bbb !default;       // 文本框提示
+$color-text-disabled:         #bbb !default;       // 失效
+$color-text-caption:          #888 !default;       // 辅助描述
+$color-text-paragraph:        #333 !default;       // 段落
+$color-link:                    $color-primary !default; // 链接
+
+$text-colors: () !default;
+$text-colors: map-merge((
+  'c0': $color-text-base,
+  'c3': $color-text-paragraph,
+  'c8': $color-text-caption,
+  'cb': $color-text-disabled,
+  'ca': $color-text-secondary,
+  'cf': $color-text-base-inverse,
+  'pr': $color-primary,
+  'wt': $color-wait,
+  'sc': $color-success,
+  'wn': $color-warning,
+  'er': $color-error
+), $text-colors);
+
+// 背景颜色
+$fill-base:                   #fff !default;       // 组件默认背景
+$fill-body:                   #f5f5f9 !default;    // 页面背景
+$fill-tap:                    #ddd !default;       // 组件默认背景 - 按下
+$fill-disabled:               #ddd !default;       // 通用失效背景
+$fill-mask:                   rgba(0, 0, 0, 0.4) !default; // 遮罩背景
+$color-icon-base:             #ccc !default;        // 许多小图标的背景，比如一些小圆点，加减号
+$fill-grey:                   #f7f7f7 !default;
+
+//边框颜色
+$border-color-base: #ddd !default;
+
+// 禁用透明度
+$opacity-disabled: 0.3 !default;
+
+// 字体大小
+$font-size-icontext:    10 * $hd !default;
+$font-size-caption-sm:  12 * $hd !default;
+$font-size-base:        14 * $hd !default;
+$font-size-subhead:     15 * $hd !default;
+$font-size-caption:     16 * $hd !default;
+$font-size-heading:     17 * $hd !default;
+$font-size-display-sm:  18 * $hd !default;
+$font-size-display-md:  21 * $hd !default;
+$font-size-display-lg:  24 * $hd !default;
+$font-size-display-xl:  30 * $hd !default;
+
+$font-sizes: () !default;
+$font-sizes: map-merge((
+  'd4': $font-size-display-xl,
+  'd3': $font-size-display-lg,
+  'd2': $font-size-display-md,
+  'd1': $font-size-display-sm,
+  't3': $font-size-heading,
+  't2': $font-size-caption,
+  't1': $font-size-subhead,
+  't0': $font-size-base,
+  's1': $font-size-caption-sm,
+  's2': $font-size-icontext
+), $font-sizes);
+
+// 字体族
+$font-family-base: -apple-system,"SF UI Text",Roboto,Noto,"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif !default;
+$font-family-code: Consolas,Menlo,Courier,monospace !default;
+
+// 圆角
+$radius-xs: 2 * $hd !default;
+$radius-sm: 3 * $hd !default;
+$radius-md: 5 * $hd !default;
+$radius-lg: 7 * $hd !default;
+$radius-circle: 50% !default;
+
+// 边框尺寸
+$border-width-sm: 1px !default;
+$border-width-md: 1px !default;
+$border-width-lg: 2 * $hd !default;
+
+// ---- 间距
+
+// 水平间距
+$h-spacing-sm: 5 * $hd !default;
+$h-spacing-md: 8 * $hd !default;
+$h-spacing-lg: 15 * $hd !default;
+
+$h-spacings: () !default;
+$h-spacings: map-merge((
+  'sm': $h-spacing-sm,
+  'md': $h-spacing-md,
+  'lg': $h-spacing-lg
+), $h-spacings);
+
+// 垂直间距
+$v-spacing-xs: 3 * $hd !default;
+$v-spacing-sm: 6 * $hd !default;
+$v-spacing-md: 9 * $hd !default;
+$v-spacing-lg: 15 * $hd !default;
+$v-spacing-xl: 21 * $hd !default;
+
+$v-spacings: () !default;
+$v-spacings: map-merge((
+  'xs': $v-spacing-xs,
+  'sm': $v-spacing-sm,
+  'md': $v-spacing-md,
+  'lg': $v-spacing-lg,
+  'xl': $v-spacing-xl
+), $v-spacings);
+
+
+// 行高
+$line-height-base: 1 !default;
+$line-height-paragraph: 1.5 !default;
+
+// 图标尺寸
+// ---
+$icon-size-xxs: 15 * $hd !default;
+$icon-size-xs: 18 * $hd !default;
+$icon-size-sm: 21 * $hd !default;
+$icon-size-md: 22 * $hd !default;       // 导航条上的图标、grid的图标大小
+$icon-size-lg: 36 * $hd !default;
+
+// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
+$yiq-contrasted-threshold:  150 !default;
+
+// Customize the light and dark text colors for use in our YIQ color contrast function.
+$yiq-text-dark:             $color-text-base !default;
+$yiq-text-light:            $color-text-base-inverse !default;
+
+// 动画缓动
+// ---
+$ease-in-out-quint: cubic-bezier(.86, 0, .07, 1) !default;
+
+// 组件变量
+// ---
+
+// button
+$button-height: 47 * $hd !default;
+$button-font-size: 18 * $hd !default;
+
+$button-height-sm: 30 * $hd !default;
+$button-font-size-sm: 13 * $hd !default;
+
+$button-color-text: $color-text-base !default;
+$button-background: $fill-base !default;
+$button-padding-horizontal: 0 !default;
+$button-active-background: $fill-tap !default;
+$button-disabled-opacity: .6 !default;
+$button-radius: $radius-md !default;
+$button-border-color: $border-color-base !default;
+$button-inline-padding: $h-spacing-lg !default;
+
+// input
+$input-label-width: 17 * $hd !default;       // InputItem、TextareaItem 文字长度基础值
+$input-font-size: 17 * $hd !default;
+$input-color-icon: #ccc !default; // input clear icon 的背景色
+
+// search-bar
+$search-bar-fill: #efeff4 !default;
+$search-bar-height: 44 * $hd !default;
+$search-bar-input-height: 28 * $hd !default;
+$search-bar-font-size: 15 * $hd !default;
+$search-color-icon: #bbb !default; // input search icon 的背景色
+
+// tab
+$tabs-color: $color-primary !default;
+$tabs-font-size-heading: 15 * $hd !default;
+$tabs-height: 43.5 * $hd !default;
+
+// loading
+$loading-bg: rgba(0, 0, 0, 0.2) !default;
+$loading-spinner-bg: rgba(0, 0, 0, 0.7) !default;
+$loading-spinner-size: 60 * $hd !default;
+$loading-spinner-raduis: $radius-lg !default;
+$loading-text-color: $color-text-base-inverse !default;
+$loading-font-size: $font-size-base !default;
+$loading-icon-color: $color-text-base-inverse !default;
+
+// z-index
+$progress-zindex: 2000 !default;
+$popover-zindex: 1999 !default;
+$toast-zindex: 1999 !default;
+$action-sheet-zindex: 1000 !default; // actonsheet 会放到 popup / modal 中
+$picker-zindex: 1000 !default;
+$popup-zindex: 999 !default;
+$modal-zindex: 999 !default; // modal.alert 应该最大，其他应该较小
+$tabs-pagination-zindex: 999 !default;
+
+$z-index: () !default;
+$z-index: map-merge((
+  'progress': $progress-zindex,
+  'popover': $popover-zindex,
+  'toast': $toast-zindex,
+  'action-sheet': $action-sheet-zindex,
+  'picker': $picker-zindex,
+  'popup': $popup-zindex,
+  'modal': $modal-zindex,
+  'tabs-pagination': $tabs-pagination-zindex
+  ), $z-index
+);
+
+// list
+$list-font-size: $font-size-base !default;
+
+$list-item-radius: 0 !default;
+$list-item-padding: $v-spacing-sm $h-spacing-md !default;
+$list-item-margin-bottom: $v-spacing-md !default;
+$list-item-bg: $fill-base !default;
+
+$checkbox-checked-color: $color-primary !default;

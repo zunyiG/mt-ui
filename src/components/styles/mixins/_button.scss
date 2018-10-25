@@ -1,0 +1,47 @@
+@mixin button-ghost($button-fill) {
+  color: $button-fill;
+  background-color: transparent;
+  &.is-active {
+    opacity: .6;
+  }
+  &.is-disabled {
+    opacity: .4;
+  }
+
+}
+
+@mixin button-size($font-size, $button-height, $padding-horizontal, $line-height: $button-height) {
+  font-size: $font-size;
+  height: $button-height;
+  line-height: $line-height;
+  padding: 0 $padding-horizontal;
+
+  &.is-round {
+    border-radius: $button-height / 2;
+  }
+
+  &.is-circle {
+    border-radius: 50%;
+    width: $button-height;
+  }
+}
+
+@mixin button-variant($button-fill, $button-border, $active-background: darken($button-fill, 10%), $active-border: darken($button-border, 12.5%)) {
+  color: color-yiq($button-fill);
+  background-color: $button-fill;
+  @include borderline('all', $button-fill, $button-radius);
+
+  &.is-active {
+    color: rgba(color-yiq($active-background), 0.6);
+    background-color: $active-background;
+  }
+
+  &.is-disabled {
+    color: rgba(color-yiq($active-background), 0.6);
+    opacity: .4;
+  }
+
+  &.is-ghost {
+    @include button-ghost($button-fill);
+  }
+}

@@ -1,0 +1,15 @@
+@charset 'UTF-8';
+@import '../../styles/common/var';
+@import '../../styles/mixins/mixins';
+
+
+@include b(wing-blank) {
+  margin-left: h-spacing('md');
+  margin-right: h-spacing('md');
+  @each $suffix, $value in $h-spacings {
+    @include m($suffix) {
+      margin-left: $value;
+      margin-right: $value;
+    }
+  }
+}

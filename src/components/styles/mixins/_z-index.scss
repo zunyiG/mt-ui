@@ -1,0 +1,7 @@
+@function z($key) {
+  @if not map-has-key($z-indexs, $key) {
+    @warn "No `#{$key}` found for `#{$z-indexs}` in $z-layers map. Property omitted.";
+  }
+
+  @return map-get($z-indexs, $key);
+}

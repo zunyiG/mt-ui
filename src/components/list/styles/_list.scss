@@ -1,0 +1,16 @@
+@import '../../styles/mixins/mixins';
+@import '../../styles/mixins/utils';
+
+@include b(list) {
+  font-size: $list-font-size;
+  display: flex;
+  flex-direction: column;
+
+  @include e(item) {
+    background-color: $list-item-bg;
+    padding: $list-item-padding;
+    margin-bottom: $list-item-margin-bottom;
+    position: relative;
+    border-radius: $list-item-radius;
+  }
+}

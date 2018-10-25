@@ -1,0 +1,13 @@
+@charset 'UTF-8';
+@import '../../styles/common/var';
+@import '../../styles/mixins/mixins';
+
+
+@include b(white-space) {
+  height: v-spacing('md');
+  @each $suffix, $value in $v-spacings {
+    @include m($suffix) {
+      height: $value;
+    }
+  }
+}

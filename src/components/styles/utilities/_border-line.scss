@@ -1,0 +1,39 @@
+@charset 'UTF-8';
+@import '../mixins/border-line';
+@import '../mixins/mixins';
+@import '../mixins/utils';
+
+@include b(border-top) {
+  @include borderline('top', $border-color-base);
+  @include m(remove) {
+    @include border-remove('top');
+  }
+}
+
+@include b(border-right) {
+  @include borderline('right', $border-color-base);
+  @include m(remove) {
+    @include border-remove('right');
+  }
+}
+
+@include b(border-bottom) {
+  @include borderline('bottom', $border-color-base);
+  @include m(remove) {
+    @include border-remove('bottom');
+  }
+}
+
+@include b(border-left) {
+  @include borderline('left', $border-color-base);
+  @include m(remove) {
+    @include border-remove('left');
+  }
+}
+
+@include b(border-all) {
+  @include borderline('all', $border-color-base);
+  @include m(remove) {
+    @include border-remove('all');
+  }
+}

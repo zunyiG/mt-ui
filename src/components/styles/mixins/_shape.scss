@@ -1,0 +1,14 @@
+@mixin mt-rect ($width, $radius: 0, $color: transparent, $height: $width) {
+  border-radius: $radius;
+  width: $width;
+  height: $height;
+  background-color: $color;
+}
+
+@mixin mt-square ($size, $radius: 0, $color: transparent) {
+  @include mt-rect($size, $radius, $color, $size)
+}
+
+@mixin mt-circle ($size, $color: transparent) {
+  @include mt-square($size, 50%, $color)
+}

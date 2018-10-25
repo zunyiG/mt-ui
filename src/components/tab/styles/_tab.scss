@@ -1,0 +1,84 @@
+@charset 'UTF-8';
+@import '../../styles/common/var';
+@import '../../styles/mixins/button';
+@import '../../styles/mixins/mixins';
+@import '../../styles/mixins/utils';
+@import '../../styles/mixins/border-line';
+
+@include b(tab) {
+  display: flex;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+
+  @include e(header) {
+    flex-shrink: 0;
+  }
+
+  @include e(nav-warp) {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    z-index: 1;
+
+    flex-direction: row;
+
+    background-color: #fff;
+  }
+
+  @include e(nav) {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+  }
+
+  @include e(item) {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    font-size: $tabs-font-size-heading;
+    height: $tabs-height;
+    line-height: $tabs-height;
+
+    &:focus {
+      outline: none;
+    }
+
+    @include borderline('bottom');
+
+    @include when(active) {
+      color: $tabs-color;
+    }
+  }
+
+  @include e(content) {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    transition: all .3s cubic-bezier(0.35, 0, 0.25, 1);
+  }
+
+  @include e(pane) {
+    width: 100%;
+    flex-shrink: 0;
+    overflow-y: auto;
+  }
+
+  @include e(underline) {
+    position: absolute;
+    border: 1px $tabs-color solid;
+    transform: translate3d(0, 0, 0);
+    bottom: 0;
+    transition: all .3s cubic-bezier(0.35, 0, 0.25, 1);
+  }
+}

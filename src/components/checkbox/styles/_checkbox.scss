@@ -1,0 +1,70 @@
+@charset 'UTF-8';
+@import '../../styles/mixins/mixins';
+
+@include b(checkbox) {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  @include mt-square($icon-size-sm);
+
+  @include e(input) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 2;
+    border: 0;
+    appearance: none;
+  }
+
+  @include e(inner) {
+    position: absolute;
+    right: 0;
+    border: 1px solid $color-icon-base;
+    transform: rotate(0deg);
+    @include mt-circle($icon-size-sm);
+
+    &:after {
+      content: '\0020';
+      position: absolute;
+      display: none;
+      top: 2 * $hd;
+      right: 7 * $hd;
+      z-index: 999;
+      width: 5 * $hd;
+      height: 11 * $hd;
+      border-style: solid;
+      border-width: 0 1 * $hd 1* $hd 0;
+      transform: rotate(45deg);
+    }
+  }
+
+  @include when(checked) {
+    @include e(inner) {
+      background-color: $checkbox-checked-color;
+      border-color: $checkbox-checked-color;
+
+      &:after {
+        display: block;
+        border-color: $fill-base;
+      }
+    }
+  }
+
+  @include when(disabled) {
+    opacity: $opacity-disabled;
+
+    @include when(checked) {
+      @include e(inner) {
+        border-color: $color-text-caption;
+        background: none;
+
+        &:after {
+          border-color: $color-text-caption;
+        }
+      }
+    }
+  }
+}

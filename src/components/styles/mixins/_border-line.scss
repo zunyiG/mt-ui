@@ -1,0 +1,108 @@
+$map-border-position: () !default;
+$map-border-position: map-merge((
+  top: (top, left),
+  right: (top, right),
+  bottom: (bottom, left),
+  left: (top, left),
+  all: (top, left)
+), $map-border-position);
+
+@mixin scale-borderline-common($color, $direction) {
+  content: '';
+  position: absolute;
+  background-color: $color;
+  display: block;
+  z-index: 1;
+  @each $position in border-position($direction) {
+    #{$position}: 0;
+  }
+}
+
+@mixin borderline($direction, $color: $border-color-base, $radius: 0) {
+  $direction-infix: direction-infix($direction);
+  border#{$direction-infix}: 1px solid $color;
+  border-radius: $radius;
+
+  @media (min--moz-device-pixel-ratio: 1.5) and (max--moz-device-pixel-ratio: 2.49), (-webkit-min-device-pixel-ratio: 1.5) and (-webkit-max-device-pixel-ratio: 2.49), (min-device-pixel-ratio: 1.5) and (max-device-pixel-ratio: 2.49), (min-resolution: 144dpi) and (max-resolution: 239dpi), (min-resolution: 1.5dppx) and (max-resolution: 2.49dppx) {
+    position: relative;
+    border#{$direction-infix}: 0 none;
+    $before-infix:  before-infix($direction);
+
+    @if $direction == 'right' or $direction == 'left' {
+      &::#{$before-infix} {
+        width: 1px;
+        height: 100%;
+        transform: scaleX(0.5);
+        @include scale-borderline-common($color, $direction);
+
+        @media (min--moz-device-pixel-ratio: 2.5), (-webkit-min-device-pixel-ratio: 2.5), (min-device-pixel-ratio: 2.5), (min-resolution: 240dpi), (min-resolution: 2.5dppx) {
+          transform: scaleX(0.33);
+        }
+      }
+    }
+
+    @if $direction == 'top' or $direction == 'bottom' {
+      &::#{$before-infix} {
+        height: 1px;
+        width: 100%;
+        transform: scaleY(0.5);
+        @include scale-borderline-common($color, $direction);
+
+        @media (min--moz-device-pixel-ratio: 2.5), (-webkit-min-device-pixel-ratio: 2.5), (min-device-pixel-ratio: 2.5), (min-resolution: 240dpi), (min-resolution: 2.5dppx) {
+          transform: scaleY(0.33);
+        }
+      }
+    }
+
+    @if $direction == 'all' {
+      &::before {
+        border: 1px solid $color;
+        border-radius: $radius * 2;
+        height: 200%;
+        width: 200%;
+        transform: scale(0.5);
+        transform-origin: 0 0;
+        box-sizing: border-box; // 设置层叠 z轴
+        pointer-events: none;
+        @include scale-borderline-common(transparent, $direction);
+
+        @media (min--moz-device-pixel-ratio: 2.5), (-webkit-min-device-pixel-ratio: 2.5), (min-device-pixel-ratio: 2.5), (min-resolution: 240dpi), (min-resolution: 2.5dppx) {
+          height: 300%;
+          width: 300%;
+          border-radius: $radius * 3;
+          transform: scale(0.33);
+        }
+      }
+    }
+  }
+}
+
+@mixin border-remove($direction) {
+  $direction-infix: direction-infix($direction);
+
+  border#{direction-infix}: 0 none;
+
+  @if $direction == 'top' or $direction == 'left' or $direction == 'all' {
+    &::before {
+      display: none !important;
+    }
+  }
+
+  @if $direction == 'right' or $direction == 'bottom' {
+    &::after {
+      display: none !important;
+    }
+  }
+}
+
+@function before-infix($direction) {
+  @return if($direction == 'right' or $direction == 'bottom', 'after', 'before');
+}
+
+@function direction-infix($direction) {
+  @return if($direction == 'all', '', '-#{$direction}');
+}
+
+@function border-position($direction: top) {
+  @return map-get($map-border-position, $direction);
+}
